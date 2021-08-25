@@ -17,3 +17,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.chakra-select {
+  padding:5px; 
+  border-radius: 5px;
+  border-color:rgba(23, 42, 58,0.3);
+  color:rgb(23, 42, 58)
+}
+
+.chakra-select:focus {
+  outline:#172A3A
+}
