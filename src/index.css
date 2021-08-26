@@ -28,3 +28,7 @@ body {
 .chakra-select:focus {
   outline:#172A3A
 }
+
+.stateContainer {
+  width:175px
+}
