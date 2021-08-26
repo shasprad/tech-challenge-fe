@@ -27,19 +27,17 @@ const Graph = ({data,isLoading}) => {
                                     margin={{top:30}} 
                                     tickMargin={10}
                                     tickFormatter={(val) => {
-                                        try {
-                                            return (format(Date.parse(val),"do LLL"))
-                                        } catch {}
+                                        try { return (format(Date.parse(val),"do LLL")) } catch {}
                                     }}
                                 />
                                 <YAxis />
                                 <Tooltip labelFormatter={(val) => { try { return (format(Date.parse(val),"do MMMM, y")) } catch {}  }}/>
                                 
-                                <Bar dataKey="Recovered" stackId="day" fill="#82ca9d" />
-                                <Bar dataKey="Hospitalized" stackId="day" fill="#8884d8" />
+                                <Bar dataKey="Recovered" stackId="day" fill="#0A8754" />
+                                <Bar dataKey="Hospitalized" stackId="day" fill="#F79824" />
                                 <Bar dataKey="Deceased" stackId="day" fill="#F45866" />
                                 <br/>
-                                <Legend wrapperStyle={{position:'relative'}}/>
+                                <Legend wrapperStyle={{position:'relative',marginTop:"10px"}}/>
                             </BarChart>
                         </ResponsiveContainer>
                     : 

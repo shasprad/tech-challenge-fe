@@ -1,14 +1,28 @@
 import React from 'react' 
 import { Box, Flex, Select, FormLabel } from '@chakra-ui/react'
 import { Context } from '../State'
+import DatePicker from "react-datepicker";
+import format from 'date-fns/format';
+
+import "react-datepicker/dist/react-datepicker.css";
+import "./styles/DatePicker.css"
 
 const Selector = ({fetchData}) => {
 
     const store = React.useContext(Context) 
+    const [rawFrom,setRawFrom] = React.useState()
+    const [rawTo,setRawTo] = React.useState()
 
     const handleChange = (e) => {
         store.set[e.name](e.value)
         fetchData({...store.get,[e.name]:e.value})
+    }
+
+    const handleDateChange = (date,name) => {
+        if (name === "to") setRawTo(date)
+        if (name === "from") setRawFrom(date) 
+        store.set[name](format(date,"Y-MM-dd"))
+        fetchData({...store.get,[name]:format(date,"Y-MM-dd")})
     }
 
     return (
@@ -23,6 +37,7 @@ const Selector = ({fetchData}) => {
                         onChange={(event) => handleChange(event.target)} 
                         iconSize={0}
                         padding="5px"
+                        className="stateContainer"
                     >
                         <option value="all">State</option>
                         <option value="Kerala">Kerala</option>
@@ -95,27 +110,19 @@ const Selector = ({fetchData}) => {
                     </Select>                    
                 </Box>
                 <Box width="100%" padding="0px 15px">
-                    <Flex>
-                        <FormLabel pr={10}>
+                    <Flex alignItems="center">
+                        <FormLabel pr={10} color="#6E7A87">
                             From
                         </FormLabel>
-                        <Select placeholder="Select option">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </Select>
+                        <DatePicker name="from" selected={rawFrom} onChange={(date) => handleDateChange(date,"from")}/>
                     </Flex>
                 </Box>
                 <Box width="100%" padding="0px 15px">
-                    <Flex>
-                        <FormLabel pr={10}>
+                    <Flex alignItems="center">
+                        <FormLabel pr={10} color="#6E7A87">
                             To
                         </FormLabel>
-                        <Select placeholder="Select option">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </Select>
+                        <DatePicker name="to" selected={rawTo} onChange={(date) => handleDateChange(date,"to")}/>
                     </Flex>
                 </Box>
             </Flex>
