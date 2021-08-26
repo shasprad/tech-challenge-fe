@@ -2,8 +2,8 @@ import React from 'react'
 
 const Context = React.createContext({
     get:{
-        from: '',
-        to:'',
+        from: '2020-02-01',
+        to:'2020-02-19',
         data:[{}],
         age:'All',
         sex:'',
@@ -22,8 +22,8 @@ const Context = React.createContext({
 })
 
 const Provider = (props) => {
-    const [from,setFrom] = React.useState("")
-    const [to,setTo] = React.useState("") 
+    const [from,setFrom] = React.useState("2020-02-01")
+    const [to,setTo] = React.useState("2020-02-19") 
     const [data,setData] = React.useState("")
     const [age,setAge] = React.useState("0-130")
     const [sex,setSex] = React.useState("all")
