@@ -1,0 +1,7 @@
+# opslyft-fe
+Frontend for Opslyft Tech Challenge
+
+To run the project, please follow the following steps. 
+
+1. Run `npm install` 
+2. Run `npm start` 
