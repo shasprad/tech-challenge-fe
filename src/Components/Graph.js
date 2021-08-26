@@ -41,7 +41,7 @@ const Graph = ({data,isLoading}) => {
                             </BarChart>
                         </ResponsiveContainer>
                     : 
-                        <Spinner width="50px" height="50px" thickness="3px" margin="0px auto" display="flex"/>
+                        <Spinner color="#456990" width="50px" height="50px" thickness="3px" margin="0px auto" display="flex"/>
                 }
                 
             </Box>

@@ -10,15 +10,20 @@ import "./styles/DatePicker.css"
 const Selector = ({fetchData}) => {
 
     const store = React.useContext(Context) 
-    const [rawFrom,setRawFrom] = React.useState()
-    const [rawTo,setRawTo] = React.useState()
+    const [rawFrom,setRawFrom] = React.useState(new Date("Mon Mar 23 2020 00:00:00 GMT+0530 (India Standard Time)"))
+    const [rawTo,setRawTo] = React.useState(new Date("Mon Aug 23 2021 00:00:00 GMT+0530 (India Standard Time)"))
 
     const handleChange = (e) => {
         store.set[e.name](e.value)
         fetchData({...store.get,[e.name]:e.value})
     }
 
+    React.useLayoutEffect(() => {
+        fetchData({...store.get})
+    },[])
+
     const handleDateChange = (date,name) => {
+        console.log(date)
         if (name === "to") setRawTo(date)
         if (name === "from") setRawFrom(date) 
         store.set[name](format(date,"Y-MM-dd"))

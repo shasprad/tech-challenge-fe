@@ -32,3 +32,5 @@ body {
 .stateContainer {
   width:175px
 }
+
+.chakra-select__icon-wrapper { display:none !important }
